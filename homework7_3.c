@@ -2,26 +2,24 @@
 
 #include <stdio.h>
 
-#define SIZE 12
+#define SIZE 12 //размер массива
+#define SHIFTSIZE 6 //размер сдвига
 
 void Shift(int arr[], int n, int k) 
 {
     int temp[k];
     
-    // Сохраняем последние k элементов во временный массив
-    for (int i = n - k; i < n; i++) 
+    for (int i = n - k; i < n; i++) // Сохраняем последние k элементов во временный массив
     {
         temp[i - (n - k)] = arr[i];
     }
     
-    // Сдвигаем остальные элементы вправо на k позиций
-    for (int i = n - k - 1; i >= 0; i--) 
+    for (int i = n - k - 1; i >= 0; i--) // Сдвигаем остальные элементы вправо на k позиций
     {
         arr[i + k] = arr[i];
     }
     
-    // Вставляем временный массив в начало
-    for (int i = 0; i < k; i++) 
+    for (int i = 0; i < k; i++) // Вставляем данные в массив до сдвига
     {
         arr[i] = temp[i];
     }
@@ -34,12 +32,12 @@ int main()
     printf("Enter [%d] array:\n", SIZE);
     for (int i = 0; i < SIZE; i++) 
     {
-        scanf("%d", &arr[i]);
+        scanf("%d", &arr[i]);       //обычное чтение данных в массив
     }
     
-    Shift(arr, SIZE, 6); //размер сдвига - 4
+    Shift(arr, SIZE, SHIFTSIZE);
     
-    printf("Finish array with 4 step shift:\n");
+    printf("Finish array with %d step shift:\n", SHIFTSIZE);
     for (int i = 0; i < SIZE; i++) 
     {
         printf("%d ", arr[i]);
