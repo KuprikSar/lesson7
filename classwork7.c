@@ -40,6 +40,8 @@ int main()
 // половин массива. Необходимо изменить считанный массив и напечатать его
 // одним циклом.
 
+
+/*
 #define SIZE 10
 
 void invertArray(int* array, int start, int end) 
@@ -73,5 +75,54 @@ int main()
         printf("%d ", array[i]);
     }
     printf("\n");
+    return 0;
+}
+*/
+
+#define SIZE 10
+
+int main() 
+{
+    int array[SIZE];
+    int repeat[SIZE] = {0}; // Обнуление массива
+    int result[SIZE];
+    int count = 0; // Счетчик чисел, которые повторяются
+    
+    printf("enter array:\n");
+    for (int i = 0; i < SIZE; i++) 
+    {
+        scanf("%d", &array[i]);
+    }
+    
+    // Подсчет количества повторений каждого числа
+    for (int i = 0; i < SIZE; i++) 
+    {
+        for (int j = i+1; j < SIZE; j++) 
+        {
+            if (array[i] == array[j]) 
+            {
+                repeat[i]++;
+            }
+        }
+    }
+    
+    // Добавление повторяющихся чисел в результирующий массив
+    for (int i = 0; i < SIZE; i++) 
+    {
+        if (repeat[i] > 0) 
+        {
+            result[count] = array[i];
+            count++;
+        }
+    }
+    
+    // Вывод результирующего массива
+    printf("result array:\n");
+    for (int i = 0; i < count; i++) 
+    {
+        printf("%d ", result[i]);
+    }
+    printf("\n");
+    
     return 0;
 }
